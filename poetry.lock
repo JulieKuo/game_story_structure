@@ -777,6 +777,7 @@ prompt_toolkit = ">=3.0.41,<3.1.0"
 pygments = ">=2.4.0"
 stack_data = "*"
 traitlets = ">=5.13.0"
+typing_extensions = {version = ">=4.6", markers = "python_version < \"3.12\""}
 
 [package.extras]
 all = ["ipython[black,doc,kernel,matplotlib,nbconvert,nbformat,notebook,parallel,qtconsole]", "ipython[test,test-extra]"]
@@ -3162,5 +3163,5 @@ files = [
 
 [metadata]
 lock-version = "2.0"
-python-versions = "^3.12"
-content-hash = "0f9fa9074571815f819c09caddd1f497dbefea18755265121e11b08ad1388637"
+python-versions = "^3.11"
+content-hash = "ef73c520e1af0c6af813f9180d6937b67a2dafbe3b5e753c93d0d275ead65419"
