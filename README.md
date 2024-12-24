@@ -1,18 +1,60 @@
-- [專案架構](#專案架構)
-- [系統執行](#系統執行)
+# crawler
 
-# 專案架構
+- [crawler](#crawler)
+  - [目錄架構](#目錄架構)
+  - [環境設定](#環境設定)
+  - [系統執行](#系統執行)
+
+## 目錄架構
 ```
 .
-├── data
-│   ├── interim
-│   ├── processed
-│   └── raw
-├── notebooks
-│   └── test.ipynb
-├── poetry.lock
-└── pyproject.toml
+├── data                               - 存放data
+│   ├── output                         - 輸出資料
+│   ├── raw                            - 原始資料
+│   └── interim                        - 處理過的資料
+├── notebooks                          - 實驗性的 code、EDA等，等確認完後再包成 py 檔
+├── poetry.lock                        - poetry 環境相關文檔
+├── pyproject.toml                     - poetry 依賴的 package 及版本
+├── README.md                          - 說明文件
+└── requirements.txt                   - pip 依賴的 package 及版本
 ```
 
-# 系統執行
-  - 環境安裝
+
+## 環境設定
+
+- 套件管理 
+    - poetry [使用指南](https://blog.kyomind.tw/python-poetry/)
+        - 安裝 pyproject.toml 裡的套件
+            ```bash
+            poetry install --no-root
+            ```
+        - 進入環境
+            ```bash
+            poetry shell
+            ```
+        - 退出環境
+            ```bash
+            exit
+            ```
+        - 新增套件
+            ```bash
+            poetry add [Package]
+            ```
+        - 移除套件
+            ```bash
+            poetry remove [Package]
+            ```
+        - 匯出 requirements.txt
+            ```bash
+            poetry export -f requirements.txt -o requirements.txt --without-hashes --dev
+            ```
+    - pip
+        - 安裝 requirements.txt 裡的套件
+            ```bash
+            pip install -r requirements.txt
+            ```
+
+
+## 系統執行
+
+- 執行
