@@ -1,5 +1,7 @@
 .venv
 
 /data/*/*
+/models/*
+/reports/*
 
 !*.gitkeep
