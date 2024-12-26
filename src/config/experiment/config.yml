@@ -1,0 +1,33 @@
+data:
+  file_path: "/raw/percy_jackson.txt"
+
+model:
+  name: "MediaTek-Research/Breeze-7B-Instruct-v0_1" #'MediaTek-Research/Breeze-7B-Instruct-v0_1', 'TinyLlama/TinyLlama-1.1B-Chat-v1.0'
+  description: breeze
+  chunk_size: 256
+  early_stopping_patience: 20
+
+training_args:
+  # eval_steps: 20 # 每多少步進行一次評估
+  save_steps: 200 # 每多少步保存一次模型
+  logging_steps: 20  # 每多少步記錄一次訓練情況
+  num_train_epochs: 2 # 訓練的最大epoch數
+  # max_steps: 100 # 訓練的最大步數
+  # save_total_limit: 20 # 最多保存的模型數量
+  per_device_train_batch_size: 2 # 每個設備上的訓練和評估批次大小
+  # per_device_eval_batch_size: 32 # 每個設備上的訓練和評估批次大小 
+  gradient_accumulation_steps: 8 # 梯度累積的步數，在硬件限制下增加有效的批次大小
+  # weight_decay: 0.01 # 權重衰減，用於正則化和避免過擬合
+  # disable_tqdm: false # 是否禁用tqdm進度條
+  # warmup_ratio: 0.1 
+  warmup_steps: 100 # 學習率漸進增加的步數，在這些步數內學習率會從0漸增到設定的學習率
+  learning_rate: 1.0e-4 # 學習率
+  # lr_scheduler_type: "linear" # 逐漸減小學習率，有助於在訓練後期獲得更細微的模型更新
+  optim: "paged_adamw_8bit" # 使用的優化器，這裡選用支持低精度的AdamW優化器，以配合16位數的設定
+  # logging_strategy: "steps"
+  # evaluation_strategy: "steps"
+  # save_strategy: "steps"
+  # load_best_model_at_end: true # 是否在訓練結束時載入最佳模型
+  # metric_for_best_model: "f1_micro"
+  fp16: True  # 是否使用16位浮點數訓練，可以減少記憶體使用並可能加速訓練
+  # report_to: "mlflow"
