@@ -58,3 +58,12 @@
 ## 系統執行
 
 - 執行
+  - 訓練模型
+    - 啟動 mlflow server 紀錄訓練過程
+        ```bash
+        mlflow server --host 0.0.0.0 --port 5000
+        ```
+    - 瀏覽器查看 mlflow server
+        - http://localhost:5000/
+    - 訓練模型
+      - 目前於 `notebooks/train.ipynb` 中訓練
