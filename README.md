@@ -12,11 +12,17 @@
 │   ├── output                         - 輸出資料
 │   ├── raw                            - 原始資料
 │   └── interim                        - 處理過的資料
+├── logs                               - 日誌
+├── models                             - 存放模型
 ├── notebooks                          - 實驗性的 code、EDA等，等確認完後再包成 py 檔
 ├── poetry.lock                        - poetry 環境相關文檔
 ├── pyproject.toml                     - poetry 依賴的 package 及版本
 ├── README.md                          - 說明文件
-└── requirements.txt                   - pip 依賴的 package 及版本
+├── requirements.txt                   - pip 依賴的 package 及版本
+└──src                                - source code
+    ├── models                         - 主要算法
+    ├── config                         - 設定檔
+    └── utils                          - 工具函式
 ```
 
 
@@ -67,3 +73,6 @@
         - http://localhost:5000/
     - 訓練模型
       - 目前於 `notebooks/train.ipynb` 中訓練
+  
+- 設置訓練實驗參數
+    - 訓練參數放置於 `src/config/expriment/config.yml` 下，可根據不同實驗做設置

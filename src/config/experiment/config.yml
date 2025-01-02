@@ -1,11 +1,11 @@
 mlflow:
   tracking_uri: "http://localhost:5000" # GPU server 的 MLflow，可替換
   experiment_name: "story-structure"
-  run_name: "test"
+  run_name: "TinyLlama"
   log_name: "julie_kuo"
   device_id: "5"
   tags:
-    base_model: "MediaTek-Research/Breeze-7B-Instruct-v0_1"
+    base_model: "TinyLlama"
     type: "CAUSAL_LM"
     loss: "cross_entropy"
     dataset: "percy_jackson"
@@ -14,11 +14,11 @@ data:
   file_path: "/raw/percy_jackson.txt"
 
 model:
-  name: "MediaTek-Research/Breeze-7B-Instruct-v0_1" #'MediaTek-Research/Breeze-7B-Instruct-v0_1', 'TinyLlama/TinyLlama-1.1B-Chat-v1.0'
-  description: breeze
+  name: "TinyLlama/TinyLlama-1.1B-Chat-v1.0" #'MediaTek-Research/Breeze-7B-Instruct-v0_1', 'TinyLlama/TinyLlama-1.1B-Chat-v1.0'
+  description: TinyLlama
   checkpoint: "checkpoint-300"
   chunk_size: 256
-  early_stopping_patience: 20
+  early_stopping_patience: 10
   seed: 42
 
 training_args:
@@ -26,7 +26,7 @@ training_args:
   save_steps: 100 # 每多少步保存一次模型
   logging_steps: 20  # 每多少步記錄一次訓練情況
   # num_train_epochs: 2 # 訓練的最大epoch數 (max_steps 和 num_train_epochs 不能同時設定)
-  max_steps: 5000 # 訓練的最大步數 (max_steps 和 num_train_epochs 不能同時設定)
+  max_steps: 20000 # 訓練的最大步數 (max_steps 和 num_train_epochs 不能同時設定)
   save_total_limit: 20 # 最多保存的模型數量
   per_device_train_batch_size: 2 # 每個設備上的訓練批次大小
   per_device_eval_batch_size: 2 # 每個設備上的評估批次大小 
@@ -41,7 +41,7 @@ training_args:
   # lr_scheduler_type: "linear" # 逐漸減小學習率，有助於在訓練後期獲得更細微的模型更新
   optim: "paged_adamw_8bit" # 使用的優化器，這裡選用支持低精度的AdamW優化器，以配合16位數的設定
   logging_strategy: "steps"
-  evaluation_strategy: "steps"
+  eval_strategy: "steps"
   save_strategy: "steps"
   load_best_model_at_end: true # 是否在訓練結束時載入最佳模型
   # metric_for_best_model: "f1_micro"
